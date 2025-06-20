@@ -19,7 +19,7 @@ import testConnection from "./testConnection";
 // migrateCompanyWebPageV2()
 
 // step 3
-migrateAccessV2()
+// migrateAccessV2()
 
 // step 4
-// migrateContentV2()
+migrateContentV2()
