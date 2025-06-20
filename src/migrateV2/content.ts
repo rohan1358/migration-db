@@ -31,7 +31,7 @@ const migrateContentV2 = async () => {
         });
 
         for (const content of listContent) {
-            const newContent = await ContentDB2.create({
+            let body = {
                 ...omitKeys({
                     ...content,
                     ct_createdBy: 'MigrationSTP',
@@ -39,7 +39,14 @@ const migrateContentV2 = async () => {
                     ct_publishDate: formatDateToMySQL(new Date()),
                     ct_c_id: 5
                 }, ['ct_id'])
-            });
+            }
+            if (content.ct_am_id) {
+                const mappedAmaId = historyID['accessmenu']?.[content.ct_am_id?.toString()];
+                if (mappedAmaId) {
+                    body.ct_am_id = mappedAmaId;
+                }
+            }
+            const newContent = await ContentDB2.create(body);
 
             console.log('insert content', newContent.ct_id);
             if (content.ct_id && newContent.ct_id) {

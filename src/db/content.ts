@@ -4,6 +4,7 @@ import db from './sequelize'
 export function defineContent(sequelize: Sequelize) {
     class Content extends Model {
         ct_id: string | number | undefined;
+        ct_am_id: any;
     }
 
     Content.init({
