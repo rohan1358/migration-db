@@ -24,7 +24,7 @@ const destroyContentV2 = async () => {
         const ContentDetailDB2 = defineContentDetail(db2);
 
         const listContent = await ContentDB2.findAll({
-            where: { ct_c_id: 4 },
+            where: { ct_c_id: 5 },
             raw: true
         });
 
