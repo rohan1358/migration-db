@@ -9,6 +9,7 @@ import migrateContentSlider from "./migrate/slider";
 import { migrateAccessV2 } from "./migrateV2/access";
 import migrateCompanyWebPageV2 from "./migrateV2/companyWebPage";
 import migrateContentV2 from "./migrateV2/content";
+import destroyContentV2 from "./rollback/content";
 import getAllContentSlider from "./slider/getAllContentSlider";
 import testConnection from "./testConnection";
 
@@ -22,4 +23,6 @@ import testConnection from "./testConnection";
 // migrateAccessV2()
 
 // step 4
-migrateContentV2()
+// migrateContentV2()
+
+destroyContentV2()
