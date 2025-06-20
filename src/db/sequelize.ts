@@ -9,7 +9,7 @@ const db1 = new Sequelize('stp', 'ec2', 'P@ssw0rd', {
 //     dialect: 'mysql',
 // });
 
-// const db2 = new Sequelize('stpmigration', 'root', 'qwe123', {
+// const db2 = new Sequelize('protelindo', 'root', 'qwe123', {
 //     host: 'localhost',
 //     dialect: 'mysql',
 // });
