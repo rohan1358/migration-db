@@ -23,6 +23,7 @@ import testConnection from "./testConnection";
 // migrateAccessV2()
 
 // step 4
-// migrateContentV2()
+migrateContentV2()
 
-destroyContentV2()
+// rollback content
+// destroyContentV2()
