@@ -4,6 +4,7 @@ import { defineAccessMenu, defineAccessMenuAttribute, defineContent, defineConte
 import { addIdChange } from '../addIdChange';
 import { Op } from 'sequelize'
 import omitKeys from '../omitKeys';
+import migrateContentV2 from './content';
 
 export const migrateAccessV2 = async () => {
     const { db1, db2 } = db
@@ -25,7 +26,7 @@ export const migrateAccessV2 = async () => {
 
         const listAccessMenu = await AccessMenuDB1.findAll({
             where: {
-                am_id: { [Op.gt]: 282 }
+                am_id: { [Op.gt]: 297 } // mengambil data dengan id diatas 297, ex : 298, 299, dst
             },
             raw: true
         });
@@ -110,6 +111,9 @@ export const migrateAccessV2 = async () => {
                 }
 
 
+            }
+            if (accessMenu.am_id && typeof accessMenu.am_id === 'number') {
+                migrateContentV2({ am_id: accessMenu.am_id })
             }
         }
 

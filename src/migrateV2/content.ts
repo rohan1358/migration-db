@@ -9,11 +9,20 @@ import db from '../db/sequelize'
 import omitKeys from '../omitKeys';
 // import { db1, db2 } from '../db1db2'; // Sequelize instances
 
-const migrateContentV2 = async () => {
+const migrateContentV2 = async ({ am_id, c_id }: { am_id?: number, c_id?: number }) => { // kirimkan old id
     const { db1, db2 } = db
     const t1 = await db1.transaction()
     const t2 = await db2.transaction()
     try {
+
+        let where = {}
+        if (c_id) {
+            where = { ct_c_id: c_id }
+        } else if (am_id) {
+            where = { ct_am_id: am_id }
+        } else {
+            where = { ct_c_id: 4 }
+        }
 
 
 
@@ -26,7 +35,7 @@ const migrateContentV2 = async () => {
         const ContentDetailDB2 = defineContentDetail(db2);
 
         const listContent = await ContentDB1.findAll({
-            where: { ct_c_id: 4 },
+            where: where,
             raw: true
         });
 
